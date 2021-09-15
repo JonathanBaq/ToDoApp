@@ -23,9 +23,9 @@ const App = () => {
       </div>
       <div className='App'>
         <h2>Add task:</h2>
-        <label for='date'>Date: </label>
+        <label htmlFor='date'>Date: </label>
         <input id='date' name='date' value={toDoList.date} onChange={handleInputChange} />
-        <label for='desc'>Description: </label>
+        <label htmlFor='desc'>Description: </label>
         <input id='desc' name='description' value={toDoList.description} onChange={handleInputChange} />
         <button onClick={addToDo}>Add</button>
       </div>
