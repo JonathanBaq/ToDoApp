@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [toDo, setToDo] = useState({
+    date: '',
+    description: ''
+  })
+  const [toDoList, setToDoList] = useState([]);
+
+  const handleInputChange = (event) => {
+    setToDo({ ...toDo, [event.target.name]: [event.target.value] });
+  };
+
+  const addToDo = () => {
+    setToDoList([...toDoList, toDo]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className='App-header'>
+        <h1>Simple To-do List</h1>
+      </div>
+      <div className='App'>
+        <h2>Add task:</h2>
+        <label for='date'>Date: </label>
+        <input id='date' name='date' value={toDoList.date} onChange={handleInputChange} />
+        <label for='desc'>Description: </label>
+        <input id='desc' name='description' value={toDoList.description} onChange={handleInputChange} />
+        <button onClick={addToDo}>Add</button>
+      </div>
+      <table>
+        <tbody>
+          <tr><th>Date</th><th>Description</th></tr>
+          {toDoList.map((toDo) =>
+            <tr key={Math.random()}>
+              <td>{toDo.date}</td>
+              <td>{toDo.description}</td>
+            </tr>)}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
 export default App;
