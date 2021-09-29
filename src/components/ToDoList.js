@@ -10,6 +10,7 @@ const ToDoList = (props) => {
             <tr key={index}>
               <td>{toDo.date}</td>
               <td>{toDo.description}</td>
+              <td>{toDo.priority}</td>
               <td><button onClick={() => props.deleteToDo(toDo, index)}>Delete</button></td>
             </tr>)}
         </tbody>
